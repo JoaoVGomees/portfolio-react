@@ -45,18 +45,11 @@ export default function Navbar({ dark, toggleDark }) {
 
         <div className="flex items-center gap-3">
 
-          {/* Language toggle */}
+          {/* Language toggle — only flag */}
           <button onClick={toggleLang} aria-label="Toggle language"
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg
-              bg-neutral-100 dark:bg-neutral-800
-              border border-neutral-200 dark:border-neutral-700
-              hover:border-purple-300 dark:hover:border-purple-700
-              text-xs font-medium text-neutral-600 dark:text-neutral-300
-              transition-all duration-200 hover:scale-105">
-            <span className="text-base leading-none">
-              {lang === 'pt' ? BR_FLAG : UK_FLAG}
-            </span>
-            <span>{lang === 'pt' ? 'PT' : 'EN'}</span>
+            className="text-2xl leading-none transition-transform duration-200
+              hover:scale-125 active:scale-95">
+            {lang === 'pt' ? BR_FLAG : UK_FLAG}
           </button>
 
           {/* Theme toggle */}
