@@ -73,14 +73,6 @@ export default function Hero() {
                 {tech}
               </div>
             ))}
-
-            {/* Badge disponível */}
-            <div className="col-span-3 flex items-center justify-center gap-2
-              px-4 py-3 rounded-xl mt-1
-              bg-purple-800 dark:bg-purple-700 text-white text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              disponível para oportunidades
-            </div>
           </div>
         </div>
 
