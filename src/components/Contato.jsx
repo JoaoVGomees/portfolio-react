@@ -2,7 +2,7 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import { useLang } from '../i18n/LangContext'
 
 const links = [
-  { label: 'joaovitorsenac7817@gmail.com', href: 'mailto:joaovitorsenac7817@gmail.com', icon: '✉️' },
+  { label: 'joao@joaovgomes.com.br', href: 'mailto:joaovitorsenac7817@gmail.com', icon: '✉️' },
   { label: 'linkedin.com/in/joaovgomees',  href: 'https://linkedin.com/in/joaovgomees',  icon: '💼' },
   { label: 'github.com/JoaoVGomees',       href: 'https://github.com/JoaoVGomees',        icon: '🐙' },
 ]
