@@ -2,6 +2,12 @@ import useScrollReveal from '../hooks/useScrollReveal'
 
 const items = [
   {
+    period: 'Jul 2026 – atual',
+    title: 'Analista de Suporte Técnico N1',
+    org: 'Locaweb',
+    desc: 'Suporte técnico a clientes da Locaweb, atuando na resolução de chamados, diagnóstico de problemas e orientação sobre produtos e serviços da plataforma.',
+  },
+  {
     period: '2026 – atual',
     title: 'Bacharelado em Engenharia de Software',
     org: 'UFBRA',
@@ -47,13 +53,11 @@ function TimelineItem({ item, index }) {
       <div className="flex-shrink-0 relative z-10 mt-1">
         <div className="w-7 h-7 rounded-full bg-white dark:bg-neutral-950
           border-2 border-purple-300 dark:border-purple-700
-          flex items-center justify-center
-          group-hover:border-purple-500 transition-colors">
+          flex items-center justify-center transition-colors">
           <div className="w-2.5 h-2.5 rounded-full bg-purple-600 dark:bg-purple-500" />
         </div>
       </div>
-      <div className="flex flex-col gap-2 pt-0.5 pb-2
-        pl-0 pr-6 rounded-xl">
+      <div className="flex flex-col gap-2 pt-0.5 pb-2 pl-0 pr-6 rounded-xl">
         <span className="text-xs font-medium tracking-wider text-purple-600 dark:text-purple-400">
           {item.period}
         </span>
@@ -88,7 +92,6 @@ export default function Experiencia() {
         </div>
 
         <div className="relative flex flex-col max-w-2xl mx-auto w-full">
-          {/* Linha vertical */}
           <div className="absolute left-3 top-2 bottom-2 w-px
             bg-gradient-to-b from-purple-300 via-purple-200 to-transparent
             dark:from-purple-700 dark:via-purple-900 dark:to-transparent" />
