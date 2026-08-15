@@ -1,4 +1,5 @@
 import useScrollReveal from '../hooks/useScrollReveal'
+import { useLang } from '../i18n/LangContext'
 
 const links = [
   { label: 'joaovitorsenac7817@gmail.com', href: 'mailto:joaovitorsenac7817@gmail.com', icon: '✉️' },
@@ -7,6 +8,8 @@ const links = [
 ]
 
 export default function Contato() {
+  const { t } = useLang()
+  const { title, subtitle, copyright } = t.contato
   const headRef  = useScrollReveal()
   const linksRef = useScrollReveal()
 
@@ -16,10 +19,10 @@ export default function Contato() {
 
         <div ref={headRef} className="reveal flex flex-col gap-4">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white">
-            Vamos conversar?
+            {title}
           </h2>
           <p className="text-purple-200 dark:text-purple-300 font-light text-lg max-w-md">
-            Entre em contato pelo e-mail ou pelas redes abaixo.
+            {subtitle}
           </p>
         </div>
 
@@ -39,7 +42,7 @@ export default function Contato() {
         </div>
 
         <p className="text-purple-300/50 text-xs font-light mt-2">
-          © {new Date().getFullYear()} João Vitor Gomes Pereira
+          © {new Date().getFullYear()} {copyright}
         </p>
 
       </div>

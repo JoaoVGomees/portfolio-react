@@ -1,27 +1,9 @@
 import useScrollReveal from '../hooks/useScrollReveal'
-
-const projects = [
-  {
-    name: 'GestaoOsAPI',
-    desc: 'API REST completa em C#/ASP.NET Core com Oracle Autonomous Database, autenticação JWT, BCrypt e deploy na VPS utilizando Docker e Nginx. Projeto de faculdade.',
-    tags: ['C#', '.NET 8', 'Oracle Database', 'JWT', 'Docker', 'VPS', 'Nginx'],
-    github: 'https://github.com/JoaoVGomees/Gerenciador-De-Ordens-De-Servico',
-  },
-  {
-    name: 'Biblioteca de Animes',
-    desc: 'App fullstack com Java/Spring Boot no backend, React no frontend, WebSocket para atualizações em tempo real e MySQL.',
-    tags: ['Java', 'Spring Boot', 'React', 'WebSocket', 'MySQL'],
-    github: null,
-  },
-  {
-    name: 'WhatsApp AI Bot',
-    desc: 'Bot inteligente integrado com Evolution API + Google Gemini Flash, construído em Spring Boot e deployado no Railway.',
-    tags: ['Java', 'Spring Boot', 'Gemini', 'Evolution API', 'Railway'],
-    github: 'https://github.com/JoaoVGomees/whatsapp-claude-bot',
-  },
-]
+import { useLang } from '../i18n/LangContext'
 
 export default function Projetos() {
+  const { t } = useLang()
+  const { tag, title, private: privateLabel, items } = t.projetos
   const headRef = useScrollReveal()
   const gridRef = useScrollReveal()
 
@@ -31,15 +13,15 @@ export default function Projetos() {
 
         <div ref={headRef} className="reveal flex flex-col items-center gap-3 text-center">
           <span className="text-xs font-medium tracking-[0.2em] text-purple-700 dark:text-purple-400 uppercase">
-            Portfólio
+            {tag}
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-neutral-900 dark:text-neutral-50">
-            Projetos em destaque
+            {title}
           </h2>
         </div>
 
         <div ref={gridRef} className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
+          {items.map((p, i) => (
             <div key={p.name}
               style={{ transitionDelay: `${i * 100}ms` }}
               className="relative flex flex-col gap-5 p-7 rounded-2xl
@@ -54,20 +36,18 @@ export default function Projetos() {
                 dark:from-purple-600 dark:to-purple-900
                 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <h3 className="font-display text-xl text-neutral-900 dark:text-neutral-50">
-                {p.name}
-              </h3>
+              <h3 className="font-display text-xl text-neutral-900 dark:text-neutral-50">{p.name}</h3>
 
               <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-light flex-1">
                 {p.desc}
               </p>
 
               <div className="flex flex-wrap gap-2">
-                {p.tags.map(t => (
-                  <span key={t} className="px-2.5 py-1 rounded-md text-xs font-medium
+                {p.tags.map(tag => (
+                  <span key={tag} className="px-2.5 py-1 rounded-md text-xs font-medium
                     bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300
                     border border-purple-100 dark:border-purple-900">
-                    {t}
+                    {tag}
                   </span>
                 ))}
               </div>
@@ -81,7 +61,7 @@ export default function Projetos() {
                   </a>
                 ) : (
                   <span className="text-xs text-neutral-400 dark:text-neutral-600 font-light italic">
-                    repositório privado
+                    {privateLabel}
                   </span>
                 )}
               </div>

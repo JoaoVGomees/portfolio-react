@@ -1,49 +1,5 @@
 import useScrollReveal from '../hooks/useScrollReveal'
-
-const items = [
-  {
-    period: 'Jul 2026 – atual',
-    title: 'Analista de Suporte Técnico N1',
-    org: 'Locaweb',
-    desc: 'Suporte técnico a clientes da Locaweb, atuando na resolução de chamados, diagnóstico de problemas e orientação sobre produtos e serviços da plataforma.',
-  },
-  {
-    period: '2026 – atual',
-    title: 'Bacharelado em Engenharia de Software',
-    org: 'UFBRA',
-    desc: 'Graduação tecnológica. Base técnica sólida em desafios de engenharia e arquitetura de sistemas.',
-  },
-  {
-    period: '2025 – atual',
-    title: 'Desenvolvimento Full-Stack',
-    org: 'Projetos Pessoais & SENAC',
-    desc: 'Construção de APIs, sistemas web e bots. Projetos: GestaoOsAPI, WhatsApp Bot com Gemini.',
-  },
-  {
-    period: '2025',
-    title: 'Programação Oracle - Java Foundations',
-    org: 'SENAI',
-    desc: 'Curso livre da linguagem de programação Java, com POO.',
-  },
-  {
-    period: '2024 – 2025',
-    title: 'Serviço Militar Obrigatório',
-    org: 'FAB – PAMASP, São Paulo',
-    desc: 'Concluí o serviço obrigatório na Força Aérea Brasileira. Disciplina, trabalho em equipe e gestão sob pressão.',
-  },
-  {
-    period: '2023 – 2025',
-    title: 'ADS – Análise e Desenvolvimento de Sistemas',
-    org: 'Universidade Sumaré',
-    desc: 'Graduação tecnológica concluída. Base técnica sólida em backend, banco de dados e desenvolvimento web.',
-  },
-  {
-    period: '2023 – 2024',
-    title: 'Técnico em Desenvolvimento de Sistemas',
-    org: 'SENAI',
-    desc: 'Formação técnica com ênfase em infraestrutura, programação e redes.',
-  },
-]
+import { useLang } from '../i18n/LangContext'
 
 function TimelineItem({ item, index }) {
   const ref = useScrollReveal()
@@ -57,7 +13,7 @@ function TimelineItem({ item, index }) {
           <div className="w-2.5 h-2.5 rounded-full bg-purple-600 dark:bg-purple-500" />
         </div>
       </div>
-      <div className="flex flex-col gap-2 pt-0.5 pb-2 pl-0 pr-6 rounded-xl">
+      <div className="flex flex-col gap-2 pt-0.5 pb-2 pl-0 pr-6">
         <span className="text-xs font-medium tracking-wider text-purple-600 dark:text-purple-400">
           {item.period}
         </span>
@@ -76,6 +32,8 @@ function TimelineItem({ item, index }) {
 }
 
 export default function Experiencia() {
+  const { t } = useLang()
+  const { tag, title, items } = t.experiencia
   const headRef = useScrollReveal()
 
   return (
@@ -84,10 +42,10 @@ export default function Experiencia() {
 
         <div ref={headRef} className="reveal flex flex-col items-center gap-3 text-center">
           <span className="text-xs font-medium tracking-[0.2em] text-purple-700 dark:text-purple-400 uppercase">
-            Trajetória
+            {tag}
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-neutral-900 dark:text-neutral-50">
-            Experiência &amp; Formação
+            {title}
           </h2>
         </div>
 
@@ -95,7 +53,6 @@ export default function Experiencia() {
           <div className="absolute left-3 top-2 bottom-2 w-px
             bg-gradient-to-b from-purple-300 via-purple-200 to-transparent
             dark:from-purple-700 dark:via-purple-900 dark:to-transparent" />
-
           {items.map((item, i) => (
             <TimelineItem key={i} item={item} index={i} />
           ))}

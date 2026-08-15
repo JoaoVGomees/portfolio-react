@@ -1,17 +1,11 @@
 import useScrollReveal from '../hooks/useScrollReveal'
-
-const groups = [
-  { label: 'Backend',        techs: ['Java', 'Spring Boot', 'C#', 'ASP.NET Core', 'Node.js', 'Express'] },
-  { label: 'Frontend',       techs: ['React', 'TypeScript', 'JavaScript', 'TailwindCSS', 'HTML5/CSS3', 'Vite', 'Axios'] },
-  { label: 'Banco de Dados', techs: ['PostgreSQL', 'MySQL', 'MongoDB', 'Oracle Database', 'Supabase'] },
-  { label: 'DevOps / Infra', techs: ['Docker', 'Railway', 'Git', 'GitHub', 'Linux', 'VPS', 'Nginx', 'Load Balance'] },
-]
+import { useLang } from '../i18n/LangContext'
 
 export default function Stack() {
-  const headRef  = useScrollReveal()
-  const gridRef  = useScrollReveal()
-
-  
+  const { t } = useLang()
+  const { tag, title, groups } = t.stack
+  const headRef = useScrollReveal()
+  const gridRef = useScrollReveal()
 
   return (
     <section id="stack" className="py-28 bg-white dark:bg-neutral-950">
@@ -19,10 +13,10 @@ export default function Stack() {
 
         <div ref={headRef} className="reveal flex flex-col items-center gap-3 text-center">
           <span className="text-xs font-medium tracking-[0.2em] text-purple-700 dark:text-purple-400 uppercase">
-            Tecnologias
+            {tag}
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-neutral-900 dark:text-neutral-50">
-            Minha Stack
+            {title}
           </h2>
         </div>
 
@@ -36,21 +30,18 @@ export default function Stack() {
                 hover:border-purple-200 dark:hover:border-purple-800
                 hover:shadow-lg hover:shadow-purple-50 dark:hover:shadow-purple-900/20
                 transition-all duration-300 group">
-
               <div>
-                <span className="text-xs font-medium tracking-widest uppercase
-                  text-purple-700 dark:text-purple-400">
+                <span className="text-xs font-medium tracking-widest uppercase text-purple-700 dark:text-purple-400">
                   {g.label}
                 </span>
                 <div className="w-8 h-px bg-purple-200 dark:bg-purple-800 mt-2
                   group-hover:w-full transition-all duration-500" />
               </div>
-
               <ul className="flex flex-col gap-2.5">
-                {g.techs.map(t => (
-                  <li key={t} className="flex items-center gap-2.5">
+                {g.techs.map(tech => (
+                  <li key={tech} className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-purple-400 flex-shrink-0" />
-                    <span className="text-sm text-neutral-700 dark:text-neutral-300 font-light">{t}</span>
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300 font-light">{tech}</span>
                   </li>
                 ))}
               </ul>
