@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useLang } from '../i18n/LangContext'
 
-const links = [
-  { label: 'Sobre',       href: '#sobre' },
-  { label: 'Stack',       href: '#stack' },
-  { label: 'Projetos',    href: '#projetos' },
-  { label: 'Experiência', href: '#experiencia' },
-  { label: 'Contato',     href: '#contato' },
-]
+const BR_FLAG = '🇧🇷'
+const UK_FLAG = '🇬🇧'
 
 export default function Navbar({ dark, toggleDark }) {
+  const { lang, toggleLang, t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -17,6 +14,14 @@ export default function Navbar({ dark, toggleDark }) {
     window.addEventListener('scroll', fn)
     return () => window.removeEventListener('scroll', fn)
   }, [])
+
+  const links = [
+    { label: t.nav.sobre,       href: '#sobre' },
+    { label: t.nav.stack,       href: '#stack' },
+    { label: t.nav.projetos,    href: '#projetos' },
+    { label: t.nav.experiencia, href: '#experiencia' },
+    { label: t.nav.contato,     href: '#contato' },
+  ]
 
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
@@ -39,6 +44,22 @@ export default function Navbar({ dark, toggleDark }) {
         </nav>
 
         <div className="flex items-center gap-3">
+
+          {/* Language toggle */}
+          <button onClick={toggleLang} aria-label="Toggle language"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg
+              bg-neutral-100 dark:bg-neutral-800
+              border border-neutral-200 dark:border-neutral-700
+              hover:border-purple-300 dark:hover:border-purple-700
+              text-xs font-medium text-neutral-600 dark:text-neutral-300
+              transition-all duration-200 hover:scale-105">
+            <span className="text-base leading-none">
+              {lang === 'pt' ? BR_FLAG : UK_FLAG}
+            </span>
+            <span>{lang === 'pt' ? 'PT' : 'EN'}</span>
+          </button>
+
+          {/* Theme toggle */}
           <button onClick={toggleDark} aria-label="Alternar tema"
             className={`relative w-11 h-6 rounded-full transition-colors duration-300
               focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500
@@ -50,6 +71,7 @@ export default function Navbar({ dark, toggleDark }) {
             </span>
           </button>
 
+          {/* Mobile menu button */}
           <button onClick={() => setOpen(o => !o)} className="md:hidden p-1 flex flex-col gap-1.5">
             <span className={`block w-5 h-0.5 bg-neutral-600 dark:bg-neutral-300 transition-transform duration-200 ${open ? 'rotate-45 translate-y-2' : ''}`} />
             <span className={`block w-5 h-0.5 bg-neutral-600 dark:bg-neutral-300 transition-opacity duration-200 ${open ? 'opacity-0' : ''}`} />
