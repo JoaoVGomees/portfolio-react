@@ -1,9 +1,9 @@
 import useScrollReveal from '../hooks/useScrollReveal'
 
 const links = [
-  { label: 'joao@email.com',           href: 'mailto:joao@email.com',              icon: '✉️' },
-  { label: 'linkedin.com/in/joaovitor', href: 'https://linkedin.com/in/joaovitor',  icon: '💼' },
-  { label: 'github.com/JoaoVGomees',    href: 'https://github.com/JoaoVGomees',     icon: '🐙' },
+  { label: 'joaovitorsenac7817@gmail.com', href: 'mailto:joaovitorsenac7817@gmail.com', icon: '✉️' },
+  { label: 'linkedin.com/in/joaovgomees',  href: 'https://linkedin.com/in/joaovgomees',  icon: '💼' },
+  { label: 'github.com/JoaoVGomees',       href: 'https://github.com/JoaoVGomees',        icon: '🐙' },
 ]
 
 export default function Contato() {
@@ -19,7 +19,7 @@ export default function Contato() {
             Vamos conversar?
           </h2>
           <p className="text-purple-200 dark:text-purple-300 font-light text-lg max-w-md">
-            Estou aberto a oportunidades CLT e estágio em desenvolvimento backend.
+            Entre em contato pelo e-mail ou pelas redes abaixo.
           </p>
         </div>
 
