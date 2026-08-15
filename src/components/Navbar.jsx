@@ -3,7 +3,7 @@ import { useLang } from '../i18n/LangContext'
 
 function BRFlag() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" className="w-full h-full">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" className="w-6 h-4 rounded-sm flex-shrink-0">
       <rect width="640" height="480" fill="#009c3b"/>
       <polygon points="320,60 600,240 320,420 40,240" fill="#fedf00"/>
       <circle cx="320" cy="240" r="100" fill="#002776"/>
@@ -14,7 +14,7 @@ function BRFlag() {
 
 function UKFlag() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-full h-full">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm flex-shrink-0">
       <clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath>
       <clipPath id="b"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath>
       <g clipPath="url(#a)">
@@ -67,18 +67,24 @@ export default function Navbar({ dark, toggleDark }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
 
-          {/* Language toggle */}
+          {/* Language toggle — retângulo com bandeira + código */}
           <button
             onClick={toggleLang}
             aria-label="Toggle language"
-            className="w-9 h-9 rounded-full overflow-hidden
-              ring-2 ring-neutral-200 dark:ring-neutral-700
-              hover:ring-purple-400 dark:hover:ring-purple-500
-              transition-all duration-200 hover:scale-110 active:scale-95
-              shadow-sm flex items-center justify-center">
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg
+              border border-neutral-200 dark:border-neutral-700
+              hover:border-purple-400 dark:hover:border-purple-500
+              bg-white dark:bg-neutral-900
+              hover:bg-purple-50 dark:hover:bg-neutral-800
+              transition-all duration-200 hover:scale-105 active:scale-95
+              shadow-sm">
             {lang === 'pt' ? <BRFlag /> : <UKFlag />}
+            <span className="text-xs font-semibold tracking-wider
+              text-neutral-700 dark:text-neutral-200">
+              {lang === 'pt' ? 'PT' : 'EN'}
+            </span>
           </button>
 
           {/* Theme toggle */}

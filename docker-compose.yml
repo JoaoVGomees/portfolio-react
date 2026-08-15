@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  portfolio:
+    build: .
+    container_name: portfolio
+    ports:
+      - "127.0.0.1:8080:80" # Binda apenas em localhost para não expor a porta externamente
+    restart: always
